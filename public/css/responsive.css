@@ -1,0 +1,68 @@
+/*==========================================
+Index Pages
+=============================================*/
+@media only screen and (max-width: 980px) {
+  .logo {
+    width: 100%;
+    text-align: center;
+  }
+  .p_0 {
+    padding: 1rem;
+  }
+  .flex_column {
+    flex-direction:column;
+  }
+  .margin-left {
+    margin-left: 0;
+  }
+  .text_end {
+    text-align: start;
+  }
+  .align-items_end {
+    align-items: flex-end !important;
+  }
+  .login-nav {
+    border: none;
+  }
+  .footer {
+    position: inherit;
+}
+.header h3 {
+    font-size: 12px;
+    text-align: center;
+}
+}
+@media only screen and (max-width: 768px) {
+  .logo {
+    width: 20%;
+  }
+  .mujib-logo {
+    width: 30%
+  }
+  .sidebar nav ul li a  {
+    font-size: 10px !important;
+  }
+  .flex_column {
+      flex-direction: column !important;
+  }
+
+}
+@media only screen and (max-width: 1024px) {
+
+  .sidebar nav ul li a  {
+    font-size: 14px;
+  }
+  .font-size-18 {
+    font-size: 14px !important;
+  }
+  .flex_column {
+    flex-direction: row;
+}
+.header h3 {
+  /* font-size: 20px; */
+  text-align: center;
+}
+.navbar-light .navbar-nav .nav-link {
+    font-size: 12px;
+}
+}

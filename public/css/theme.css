@@ -1,0 +1,89 @@
+.border_radius {
+  border-top-right-radius: 1.25rem !important;
+  border-top-left-radius: 1.25rem !important;
+  border-bottom-left-radius: 1.25rem !important;
+  border-bottom-right-radius: 1.25rem !important;
+}
+.btn-padding {
+  padding: 0rem 2rem;
+}
+.btn-padding-2 {
+  padding: 0.3rem 2rem;
+}
+.color-yellow {
+  color: #E8F00F;
+}
+.color-blue {
+  color: #8B21F4;
+}
+.bg-blue {
+  background-color: #4033FF;
+}
+.bg-pink {
+  background-color: #FF6F6F;
+}
+.login-bg {
+  background-color: #1B9DDA;
+}
+.color-blue-dark {
+  color: #04498B !important;
+}
+.color-dark {
+  color: #797979 !important;
+}
+
+.color-blue-2 {
+  color: #2F22FF !important;
+}
+.bg_color {
+  background-color: #D2C9C9 !important;
+}
+.border-radius-10 {
+  border-radius: 10px;
+}
+.border-radius-5 {
+  border-radius: 5px;
+}
+.issl {
+  color: #EC7D1F;
+}
+.font-size-14 {
+  font-size: 14px;
+}
+.font-size-12 {
+  font-size: 12px;
+}
+.font-size-16 {
+  font-size: 16px;
+}
+.font-size-18 {
+  font-size: 18px;
+}
+.font-size-20 {
+  font-size: 20px;
+}
+.font-weight-500 {
+  font-weight: 500;
+}
+.font-weight-400 {
+  font-weight: 400;
+}
+.text_end {
+  text-align: end;
+}
+
+.border-radius-50 {
+  border-radius: 50px;
+}
+.btn-border {
+  border: 1px solid #707070;
+}
+.p_0 {
+  padding: 0;
+}
+.p-04 {
+  padding: 0.4rem;
+}
+.margin-left {
+  margin-left: 2rem;
+}
