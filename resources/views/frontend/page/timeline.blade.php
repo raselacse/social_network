@@ -3,7 +3,7 @@
 @section('header')
 <section>
 		<div class="feature-photo">
-			<figure><img src="{{asset('public/frontend/images/resources/timeline-1.jpg')}}" alt=""></figure>
+			<figure><img src="{{asset('public/frontend/images/resources/social_network 3.png')}}" alt=""></figure>
 			<div class="add-btn">
 				<a href="#" title="" data-ripple="">Followers</a>
 			</div>

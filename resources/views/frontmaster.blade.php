@@ -78,9 +78,7 @@
 												<span>published:{{$data1->created_at}} </span>
 											</div>
 											<div class="post-meta">
-
 												
-											
 												<img src="{{asset('public/post/image/'.$data1->image)}}" alt="">
                                               <div class="we-video-info">
 													<ul>

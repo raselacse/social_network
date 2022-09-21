@@ -27,7 +27,7 @@
                             Join us in Our Comminty
                         </p>
                         <div class="friend-logo">
-                            <span><img src="{{asset('public/frontend/images/wink.png')}}" alt=""></span>
+                            <span><img src="{{asset('public/frontend/images/smile.png')}}" alt=""></span>
                         </div>
                         <a href="#" title="" class="folow-me">Follow Us on</a>
                     </div>  

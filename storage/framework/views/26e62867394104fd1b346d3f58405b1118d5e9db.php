@@ -21,7 +21,8 @@
 				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
 			</span>
 			<span class="mh-text">
-				<a href="newsfeed.html" title=""><img src="<?php echo e(asset('public/frontend/images/logo2.png')); ?>" alt=""></a>
+				<!-- <a href="newsfeed.html" title=""><img src="<?php echo e(asset('public/frontend/images/logo2.png')); ?>" alt=""></a> -->
+				<a href="newsfeed.html" title="">City University</a>
 			</span>
 			<span class="mh-btns-right">
 				<a class="fa fa-sliders" href="#shoppingbag"></a>
