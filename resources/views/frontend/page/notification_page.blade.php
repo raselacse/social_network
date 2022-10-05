@@ -3,9 +3,10 @@
 @section('header')
 <section>
 		<div class="feature-photo">
-			<figure><img src="{{asset('public/frontend/images/resources/social_network 3.png')}}" alt=""></figure>
+			<figure><img src="{{asset('public/profile/profile_banner/'.$image->profile_banner)}}" alt=""></figure>
 			<div class="add-btn">
-				<a href="#" title="" data-ripple="">Followers</a>
+				<span>{{$requestcount}} followers</span>
+				<a href="#" title="" data-ripple="">Add Friend</a>
 			</div>
 			<form class="edit-phto">
 				<i class="fa fa-camera-retro"></i>
@@ -19,7 +20,7 @@
 					<div class="col-lg-2 col-sm-3">
 						<div class="user-avatar">
 							<figure>
-								<img src="{{asset('public/frontend/images/resources/unknown.png')}}" alt="">
+								<img src="{{asset('public/profile/profile_image/'.$image->profile_image)}}" alt="">
 								<form class="edit-phto">
 									<i class="fa fa-camera-retro"></i>
 									<label class="fileContainer">
@@ -34,15 +35,15 @@
 						<div class="timeline-info">
 							<ul>
 								<li class="admin-name">
-								  <h5>Ema Watson</h5>
-								  <span>Group Admin</span>
+								  <h5>{{Auth::user()->full_name}}</h5>
+								  <span>{{Auth::user()->email}}</span>
 								</li>
 								<li>
 									<a class="" href="{{route('frontend.timeline')}}" title="" data-ripple="">time line</a>
 									<a class="" href="{{route('frontend.photopage')}}" title="" data-ripple="">Photos</a>
-									<a class="" href="{{route('frontend.videospage')}}" title="" data-ripple="">Videos</a>
-									<a class="" href="{{route('frontend.friendspage')}}" title="" data-ripple="">Followers</a>
-									<a class="" href="{{route('frontend.groupspage')}}" title="" data-ripple="">Groups</a>
+									<!-- <a class="" href="{{route('frontend.videospage')}}" title="" data-ripple="">Videos</a> -->
+									<a class="" href="{{route('frontend.friendspage')}}" title="" data-ripple="">Friends</a>
+									<!-- <a class="" href="{{route('frontend.groupspage')}}" title="" data-ripple="">Groups</a> -->
 									<a class="" href="{{route('frontend.aboutpage')}}" title="" data-ripple="">about</a>
 									
 								</li>

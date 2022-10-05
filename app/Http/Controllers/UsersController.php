@@ -28,7 +28,7 @@ class UsersController extends Controller {
         $userRole = Input::get('userRole');
         $userStatus = Input::get('status');
 
-        $usersArr = \App\Models\User::with(array('Role'));
+        $usersArr = \App\Models\User::with(array('Role'))->whereNotNull('role_id');
 
         if (!empty($username)) {
             $usersArr = $usersArr->where('username', 'LIKE', '%' . $username . '%');

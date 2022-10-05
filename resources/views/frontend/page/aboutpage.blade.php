@@ -3,9 +3,10 @@
 @section('header')
 <section>
 		<div class="feature-photo">
-			<figure><img src="{{asset('public/frontend/images/resources/social_network 3.png')}}" alt=""></figure>
+			<figure><img src="{{asset('public/profile/profile_banner/'.$image->profile_banner)}}" alt=""></figure>
 			<div class="add-btn">
-				<a href="#" title="" data-ripple="">Followers</a>
+				<span>{{$requestcount}} followers</span>
+				<a href="#" title="" data-ripple="">Add Friend</a>
 			</div>
 			<form class="edit-phto">
 				<i class="fa fa-camera-retro"></i>
@@ -19,7 +20,7 @@
 					<div class="col-lg-2 col-sm-3">
 						<div class="user-avatar">
 							<figure>
-								<img src="{{asset('public/frontend/images/resources/unknown.png')}}" alt="">
+								<img src="{{asset('public/profile/profile_image/'.$image->profile_image)}}" alt="">
 								<form class="edit-phto">
 									<i class="fa fa-camera-retro"></i>
 									<label class="fileContainer">
@@ -34,15 +35,15 @@
 						<div class="timeline-info">
 							<ul>
 								<li class="admin-name">
-								  <h5>Ema Watson</h5>
-								  <span>Group Admin</span>
+								 <h5>{{Auth::user()->full_name}}</h5>
+								  <span>{{Auth::user()->email}}</span>
 								</li>
 								<li>
 									<a class="" href="{{route('frontend.timeline')}}" title="" data-ripple="">time line</a>
 									<a class="" href="{{route('frontend.photopage')}}" title="" data-ripple="">Photos</a>
-									<a class="" href="{{route('frontend.videospage')}}" title="" data-ripple="">Videos</a>
-									<a class="" href="{{route('frontend.friendspage')}}" title="" data-ripple="">Followers</a>
-									<a class="" href="{{route('frontend.groupspage')}}" title="" data-ripple="">Groups</a>
+									<!-- <a class="" href="{{route('frontend.videospage')}}" title="" data-ripple="">Videos</a> -->
+									<a class="" href="{{route('frontend.friendspage')}}" title="" data-ripple="">Friends</a>
+									<!-- <a class="" href="{{route('frontend.groupspage')}}" title="" data-ripple="">Groups</a> -->
 									<a class="active" href="{{route('frontend.aboutpage')}}" title="" data-ripple="">about</a>
 									
 								</li>
@@ -81,27 +82,30 @@
 												<li class="nav-item">
 													<a href="#interest" class="nav-link" data-toggle="tab"  >interests</a>
 												</li>
-												<li class="nav-item">
+												<!-- <li class="nav-item">
 													<a href="#lang" class="nav-link" data-toggle="tab" >languages</a>
-												</li>
+												</li> -->
 											</ul>
 											<div class="tab-content">
 												<div class="tab-pane fade show active" id="basic" >
 													<ul class="basics">
-														<li><i class="ti-user"></i>Ema Watson</li>
-														<li><i class="ti-user"></i>CSE 51 (eve)</li>
-														<li><i class="ti-user"></i>1925102046</li>
-														<li><i class="ti-mobile"></i>01770177734</li>
-														<li><i class="ti-email"></i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3c4553494e515d55507c59515d5550125f5351">emawatson@gmail.com</a></li>
+														<li><i class="ti-user"></i>{{Auth::user()->full_name}}</li>
+														<li><i class="ti-map-alt"></i>{{Auth::user()->address}}</li>
+														<li><i class="ti-mobile"></i>{{Auth::user()->contact_no}}</li>
+														<li><i class="ti-email"></i><a href="#" class="__cf_email__" data-cfemail="3c4553494e515d55507c59515d5550125f5351">{{Auth::user()->email}}</a></li>
+														<li><i class="ti-world"></i>www.yoursite.com</li>
 													</ul>
 												</div>
-												<div class="tab-pane fade show" id="location" >
-													<ul class="basics">
-														<li><i class="ti-map-alt"></i>live in US</li>
-													</ul>
+												<div class="tab-pane fade" id="location" role="tabpanel">
+													<div class="location-map">
+														<div id="map-canvas"></div>
+													</div>
 												</div>
 												<div class="tab-pane fade" id="work" role="tabpanel">
 													<div>
+														
+														<a href="#" title="">Envato</a>
+														<p>work as autohr in envato themeforest from 2013</p> 
 														<ul class="education">
 															<li><i class="ti-facebook"></i> BSCS from Oxford University</li>
 															<li><i class="ti-twitter"></i> MSCS from Harvard Unversity</li>
@@ -117,8 +121,9 @@
 												</div>
 												<div class="tab-pane fade" id="lang" role="tabpanel">
 													<ul class="basics">
-														<li>Bangla</li>
-														<li>English</li>
+														<li>english</li>
+														<li>french</li>
+														<li>spanish</li>
 													</ul>
 												</div>
 											</div>

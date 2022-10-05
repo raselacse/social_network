@@ -66,9 +66,9 @@
                             <button class="btn btn-success btn-block">{{trans('english.SIGN_IN')}}</button>
                             {!! Form::close() !!}
                         </div>
-                        <!-- <div class="panel-footer text-center">
-                            Foregot password
-                        </div> -->
+                        <!--                        <div class="panel-footer text-center">
+                                                    Foregot password
+                                                </div>-->
                     </div>
                 </div>
             </div>

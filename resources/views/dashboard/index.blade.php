@@ -2,14 +2,27 @@
 @section('content')
     <div class="content animate-panel">
         <div class="row">
-            <div class="col-lg-12 text-center">
-                <!-- <h2>
+         <div class="col-lg-12 text-center">
+                <h2>
                     {!! $title->site_title !!}
-                </h2> -->
-
+                </h2>
                 <p class="col-md-offset-1">
                     <!--Better Customer Experience-->
                 </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3 text-center">
+                
+                <div class="card">
+                   <div class="card-body">
+                    <h5 class="card-title">General User</h5>
+                    <p class="card-text">{{isset($user)? $user:0}}</p>
+                    <a href="{{url('all-user')}}" class="btn btn-primary">See All Users</a>
+                  </div>
+               </div>
+
             </div>
         </div>
     </div>

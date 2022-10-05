@@ -75,11 +75,11 @@
                                 <tr class="contain-center">
                                     <td>{!!$sl++ !!}</td>
                                     <td>{!! $value->username !!}</td>
-                                    <td>{!!$value->Role['name']!!}</td>
+                                    <td>{!! (isset($value->Role['name'])? $value->Role['name']: '')!!}</td>
                                     <td>{!! ucfirst($value->first_name) !!} {!! ucfirst($value->last_name) !!}</td>
                                     <td>{!! $value->email !!}</td>
                                     <td>{!! $value->contact_no !!}</td>
-
+                                  
                                     <td>
                                         @if ($value->status_id == '1')
                                         <span class="label label-success">{!!trans('english.ACTIVE')!!}</span>
@@ -136,6 +136,7 @@
                                     <?php  } ?>
                                 </tr>
                                 @endforeach
+
                                 @else
                                 <tr>
                                     <td colspan="9">{!!trans('english.EMPTY_DATA')!!}</td>

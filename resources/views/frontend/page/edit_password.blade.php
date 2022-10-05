@@ -3,9 +3,10 @@
 @section('header')
 <section>
 		<div class="feature-photo">
-			<figure><img src="{{asset('public/frontend/images/resources/social_network 3.png')}}" alt=""></figure>
+			<figure><img src="{{asset('public/profile/profile_banner/'.$image->profile_banner)}}" alt=""></figure>
 			<div class="add-btn">
-				<a href="#" title="" data-ripple="">Followers</a>
+				<span>{{$requestcount}} followers</span>
+				<a href="#" title="" data-ripple="">Add Friend</a>
 			</div>
 			<form class="edit-phto">
 				<i class="fa fa-camera-retro"></i>
@@ -19,7 +20,7 @@
 					<div class="col-lg-2 col-sm-3">
 						<div class="user-avatar">
 							<figure>
-								<img src="{{asset('public/frontend/images/resources/unknown.png')}}" alt="">
+								<img src="{{asset('public/profile/profile_image/'.$image->profile_image)}}" alt="">
 								<form class="edit-phto">
 									<i class="fa fa-camera-retro"></i>
 									<label class="fileContainer">
@@ -34,15 +35,15 @@
 						<div class="timeline-info">
 							<ul>
 								<li class="admin-name">
-								  <h5>Ema Watson</h5>
-								  <span>Group Admin</span>
+								 <h5>{{Auth::user()->full_name}}</h5>
+								  <span>{{Auth::user()->email}}</span>
 								</li>
 								<li>
 									<a class="" href="{{route('frontend.timeline')}}" title="" data-ripple="">time line</a>
 									<a class="" href="{{route('frontend.photopage')}}" title="" data-ripple="">Photos</a>
-									<a class="" href="{{route('frontend.videospage')}}" title="" data-ripple="">Videos</a>
-									<a class="" href="{{route('frontend.friendspage')}}" title="" data-ripple="">Followers</a>
-									<a class="" href="{{route('frontend.groupspage')}}" title="" data-ripple="">Groups</a>
+									<!-- <a class="" href="{{route('frontend.videospage')}}" title="" data-ripple="">Videos</a> -->
+									<a class="" href="{{route('frontend.friendspage')}}" title="" data-ripple="">Friends</a>
+									<!-- <a class="" href="{{route('frontend.groupspage')}}" title="" data-ripple="">Groups</a> -->
 									<a class="" href="{{route('frontend.aboutpage')}}" title="" data-ripple="">about</a>
 									
 								</li>
@@ -60,26 +61,37 @@
 @section('content')
 <div class="col-lg-6">
 									<div class="central-meta">
+												@if(Session::has('error'))
+						                            <div class='alert alert-danger alert-dismissable'>
+						                                <a class="close" data-dismiss="alert" href="#">&times;</a>
+						                                <i class='icon-remove-sign'></i>
+						                                {{ Session::get('error') }}
+						                            </div>
+						                        @endif
 										<div class="editing-info">
 											<h5 class="f-title"><i class="ti-lock"></i>Change Password</h5>
 											
-											<form method="post">
+											<form method="post" action="{{route('frontend.update_password')}}">
+												@csrf
+
 												<div class="form-group">	
-												  <input type="password" id="input" required="required"/>
+												  <input type="password" name="current_password" required="required"/>
+												  <label class="control-label" for="input">Current password</label><i class="mtrl-select"></i>
+												</div>
+
+												<div class="form-group">	
+												  <input type="password" name="password" id="input" required="required"/>
 												  <label class="control-label" for="input">New password</label><i class="mtrl-select"></i>
 												</div>
 												<div class="form-group">	
-												  <input type="password" required="required"/>
+												  <input type="password" name="confirm_password" required="required"/>
 												  <label class="control-label" for="input">Confirm password</label><i class="mtrl-select"></i>
 												</div>
-												<div class="form-group">	
-												  <input type="password" required="required"/>
-												  <label class="control-label" for="input">Current password</label><i class="mtrl-select"></i>
-												</div>
+												
 												<a class="forgot-pwd underline" title="" href="#">Forgot Password?</a>
 												<div class="submit-btns">
-													<button type="button" class="mtr-btn"><span>Cancel</span></button>
-													<button type="button" class="mtr-btn"><span>Update</span></button>
+													
+													<button type="submit" class="mtr-btn"><span>Update</span></button>
 												</div>
 											</form>
 										</div>

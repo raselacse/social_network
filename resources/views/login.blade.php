@@ -1,3 +1,9 @@
+<?php 
+
+  $settings=\App\Models\Settings::find(1);
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,8 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <title>University Social Network</title>
-    <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
+    <title>{!! $settings->site_title !!}</title>
+    <link rel="icon" href="{!! asset($settings->favicon) !!}" type="image/png" sizes="16x16"> 
     
        <link rel="stylesheet" href="{{asset('public/frontend/css/main.min.css')}}">
         <link rel="stylesheet" href="{{asset('public/frontend/css/style.css')}}">
@@ -22,20 +28,23 @@
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="land-featurearea">
                     <div class="land-meta">
-                        <h1>University Social Network</h1>
+                        <h1>{{ $settings->site_title }}</h1>
                         <p>
                             Join us in Our Comminty
                         </p>
                         <div class="friend-logo">
-                            <span><img src="{{asset('public/frontend/images/smile.png')}}" alt=""></span>
+                            <span><img src="{{asset('public/frontend/images/wink.png')}}" alt=""></span>
                         </div>
-                        <a href="#" title="" class="folow-me">Follow Us on</a>
+                        <!-- <a href="#" title="" class="folow-me">Follow Us on</a> -->
                     </div>  
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="login-reg-bg">
+                     
+
                     <div class="log-reg-area sign">
+                     
                         <h2 class="log-title">Login</h2>
                             
                         @if(Session::has('error'))
@@ -43,6 +52,14 @@
                                 <a class="close" data-dismiss="alert" href="#">&times;</a>
                                 <i class='icon-remove-sign'></i>
                                 {{ Session::get('error') }}
+                            </div>
+                        @endif
+
+                        @if(Session::has('success'))
+                            <div class='alert alert-success alert-dismissable'>
+                                <a class="close" data-dismiss="alert" href="#">&times;</a>
+                                <i class='icon-remove-sign'></i>
+                                {{ Session::get('success') }}
                             </div>
                         @endif
 
@@ -72,7 +89,10 @@
 
                     </div>
                     <div class="log-reg-area reg">
+
                         <h2 class="log-title">Register</h2>
+
+                        
                            
                         {!! Form::open(array('url' => 'register', 'class' => 'validate-form', 'autocomplete'=>'off')) !!}
                             <div class="form-group">    
@@ -87,7 +107,22 @@
                               <input type="password" name="password" required="required"/>
                               <label class="control-label" for="input">Password</label><i class="mtrl-select"></i>
                             </div>
+
                             <div class="form-radio">
+                              <div class="radio">
+                                <label>
+                                  <input type="radio" name="teacher_student" value="teacher" checked="checked"/><i class="check-box"></i>Teacher
+                                </label>
+                              </div>
+                              <div class="radio">
+                                <label>
+                                  <input type="radio" name="teacher_student" value="student" /><i class="check-box"></i>Student
+                                </label>
+                              </div>
+
+                            </div>
+                            <div class="form-radio">
+
                               <div class="radio">
                                 <label>
                                   <input type="radio" name="gender" value="male" checked="checked"/><i class="check-box"></i>Male

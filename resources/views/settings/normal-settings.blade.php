@@ -3,15 +3,15 @@
 
 <div class="content animate-panel">
     <ul class="nav nav-pills">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a href="{{ url('normal-usual-settings/1') }}" class="nav-link tab_link btn-color-1 text-dark">সাধারণ সেটিংস</a>
-        </li>
-        <li class="nav-item">
+        </li> -->
+      <!--   <li class="nav-item">
             <a href="{{ url('normal-usual-settings/2') }}" class="nav-link tab_link btn-color-2 text-dark">ব্যবহার নির্দেশিকা</a>
         </li>
         <li class="nav-item" >
             <a href="{{ url('normal-usual-settings/3') }}" class="nav-link tab_link btn-color-3 text-dark">সাধারণ জিজ্ঞাসা (FAQ)</a>
-        </li>
+        </li> -->
     </ul>
 
     <section class="general-setting btn-color-1 p-5 ">

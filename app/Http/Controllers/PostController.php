@@ -59,6 +59,8 @@ class PostController extends Controller
             $input->image = $imageName;
          }
         $input->username =$user->username;
+        $input->user_id =$user->id;
+
         $input->save();
         return redirect()->back(); 
         

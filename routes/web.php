@@ -60,7 +60,7 @@ Route::post('login', function (\Illuminate\Http\Request $request) {
             return Redirect::to('home');
 
         }elseif(auth()->user()->role_id == 7){
-            return Redirect::to('promoter/dashboard');
+            return Redirect::to('dashboard');
 
         }else{
             
@@ -90,6 +90,34 @@ Route::group(['middleware'=>'authCheck'],function (){
 
         //dashboard
         Route::get('dashboard',[\App\Http\Controllers\DashboardController::class,'index']);
+
+        Route::get('all-user',[\App\Http\Controllers\DashboardController::class,'UserIndex']);
+
+        Route::get('edit-user/{id}', '\App\Http\Controllers\DashboardController@edit_user')->name('edit_user');
+
+        Route::get('delete-user/{id}', '\App\Http\Controllers\DashboardController@delete_user')->name('delete_user');
+
+
+
+        Route::get('all-user-post/{id}', '\App\Http\Controllers\DashboardController@all_user_post')->name('all_user_post');
+        Route::get('all-user-post-edit/{id}', '\App\Http\Controllers\DashboardController@all_user_post_edit')->name('all_user_post_edit');
+        Route::get('all-user-post-delete/{id}', '\App\Http\Controllers\DashboardController@all_user_post_delete')->name('all_user_post_delete');
+
+
+
+        Route::get('all-user-friend/{id}', '\App\Http\Controllers\DashboardController@all_user_friend')->name('all_user_friend');
+         Route::get('all-user-pandingfriend/{id}', '\App\Http\Controllers\DashboardController@all_user_pandingfriend')->name('all_user_pandingfriend');
+         Route::get('all-user-approvefriend/{id}', '\App\Http\Controllers\DashboardController@approvefriend')->name('approvefriend');
+        Route::get('all-user-friend-edit/{id}', '\App\Http\Controllers\DashboardController@all_user_friend_edit')->name('all_user_friend_edit');
+        Route::get('all-user-friend-delete/{id}', '\App\Http\Controllers\DashboardController@all_user_friend_delete')->name('all_user_friend_delete');
+
+
+        Route::get('all-user-page/{id}', '\App\Http\Controllers\DashboardController@all_user_page')->name('all_user_page');
+        Route::get('all-user-page-edit/{id}', '\App\Http\Controllers\DashboardController@all_user_page_edit')->name('all_user_page_edit');
+        Route::get('all-user-page-delete/{id}', '\App\Http\Controllers\DashboardController@all_user_page_delete')->name('all_user_page_delete');
+
+
+
         Route::post('users/cpself/', [\App\Http\Controllers\UsersController::class,'cpself']);
         //change password
         Route::get('users/cpself/', function() {
@@ -184,15 +212,18 @@ Route::group(['middleware'=>'authCheck'],function (){
         Route::get('timeline-video', [FrontendController::class, 'videos_page'])->name('videospage');
         Route::get('timeline-photo', [FrontendController::class, 'photo_page'])->name('photopage');
         Route::get('timeline-friend', [FrontendController::class, 'friends_page'])->name('friendspage');
+        
         Route::get('timeline-groups', [FrontendController::class, 'groups_page'])->name('groupspage');
         Route::get('timeline-about', [FrontendController::class, 'about_page'])->name('aboutpage');
 
         Route::get('timeline-create_page', [FrontendController::class, 'create_page'])->name('creatpage');
         Route::get('timeline-edit_password', [FrontendController::class, 'edit_password'])->name('edit_password');
+        Route::post('update_password', [FrontendController::class, 'update_password'])->name('update_password');
         Route::get('timeline-massage_box', [FrontendController::class, 'massage_box'])->name('massagebox');
         Route::get('timeline-notification_page', [FrontendController::class, 'notification_page'])->name('notification_page');
 
-        Route::get('My_page', [FrontendController::class, 'my_page'])->name('my_page');
+
+        Route::get('my_page', [FrontendController::class, 'my_page'])->name('my_page');
    
 
 
@@ -210,11 +241,28 @@ Route::group(['middleware'=>'authCheck'],function (){
     });
 
 
+      Route::group(['name' => 'profile', 'as' => 'profile.'], function () 
+    {
+
+      Route::get('edit_profile', '\App\Http\Controllers\profileController@index')->name('index');
+      Route::post('store-profile/{id}', '\App\Http\Controllers\profileController@store')->name('store');
+      Route::get('view-profile', '\App\Http\Controllers\profileController@view_post')->name('view_profile');
+
+    
+    });
+
+
      Route::group(['name' => 'create_page', 'as' => 'create_page.'], function () 
     {
 
       Route::post('add-page', '\App\Http\Controllers\create_pageController@store')->name('store');
       Route::get('view-page', '\App\Http\Controllers\create_pageController@view_page')->name('view_page');
+
+       Route::get('edit-my-page/{id}', '\App\Http\Controllers\create_pageController@edit_page')->name('edit_page');
+
+      Route::get('delete-my-page/{id}', '\App\Http\Controllers\create_pageController@delete_page')->name('delete_page');
+
+      Route::POST('update-my-page/{id}', '\App\Http\Controllers\create_pageController@update_page')->name('update_page');
 
     
     });
@@ -222,13 +270,37 @@ Route::group(['middleware'=>'authCheck'],function (){
 
      Route::group(['name' => 'my_page', 'as' => 'my_page.'], function () 
     {
+      Route::post('page-post', '\App\Http\Controllers\my_pageController@store')->name('store'); 
 
-    
-      Route::get('view-my-page/{id}', '\App\Http\Controllers\my_pageController@view_page')->name('view_page');
+      Route::get('view-my-page/{id}', '\App\Http\Controllers\my_pageController@view_page')->name('view_page'); 
 
-    
+      Route::get('view-my-page-post/{id}', '\App\Http\Controllers\my_pageController@view_page_post')->name('view_page_post'); 
     });
 
+
+  Route::group(['name' => 'friend', 'as' => 'friend.'], function () 
+    {
+
+      Route::get('add-friend/{id}', '\App\Http\Controllers\friendController@addfriend')->name('addfriend'); 
+      Route::get('confrim-friend/{id}', '\App\Http\Controllers\friendController@confrimfriend')->name('confrimfriend'); 
+      Route::get('remove-friend/{id}', '\App\Http\Controllers\friendController@removefriend')->name('removefriend'); 
+
+
+    });
+
+  Route::group(['name' => 'elibrary', 'as' => 'elibrary.'], function () 
+    {
+
+      Route::get('e-Library', '\App\Http\Controllers\ElibraryController@index')->name('index'); 
+       Route::get('e-LibraryForm', '\App\Http\Controllers\ElibraryController@form')->name('form');
+      Route::post('e-Library-store', '\App\Http\Controllers\ElibraryController@store')->name('store'); 
+      Route::get('e-Library-list/{id}', '\App\Http\Controllers\ElibraryController@view')->name('view');
+      Route::get('e-Library-edit/{id}', '\App\Http\Controllers\ElibraryController@edit')->name('edit'); 
+      Route::get('e-Library-delete/{id}', '\App\Http\Controllers\ElibraryController@delete')->name('delete');
+      Route::post('e-Library-update/{id}', '\App\Http\Controllers\ElibraryController@update')->name('update');  
+
+
+    });
 
 
         

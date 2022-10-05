@@ -6,13 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-	<title>University Social Network</title>
-    <link rel="icon" href="{{asset('public/frontend/images/fav.png')}}" type="image/png" sizes="16x16"> 
-
-    @include('frontend.css')   
+     <?php
+        $settings=\App\Models\Settings::find(1);
+      ?>
+	<title>Social Network</title>
+    <link rel="icon" href="{!! asset($settings->favicon) !!}" type="image/png" sizes="16x16"> 
+    
+    
+    @include('frontend.css')
+   
 
 </head>
 <body>
+<!--<div class="se-pre-con"></div>-->
 <div class="theme-layout">
 	
 	<div class="responsive-header">
@@ -21,8 +27,7 @@
 				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
 			</span>
 			<span class="mh-text">
-				<!-- <a href="newsfeed.html" title=""><img src="{{asset('public/frontend/images/logo2.png')}}" alt=""></a> -->
-				<a href="newsfeed.html" title="">City University</a>
+				<a href="newsfeed.html" title=""><img src="{{asset('public/frontend/images/logo2.png')}}" alt=""></a>
 			</span>
 			<span class="mh-btns-right">
 				<a class="fa fa-sliders" href="#shoppingbag"></a>
@@ -34,7 +39,8 @@
 				<a href="#/" class="fa fa-search"></a>
 			</form>
 		</div>
-	</div>
+	<!-- navbar silo -->
+	</div><!-- responsive header -->
 	
 	 @include('frontend.header')
 	 @yield('header')
@@ -60,6 +66,7 @@
 
 								</aside>
 							</div>
+							<!-- sidebar -->
 						</div>	
 					</div>
 				</div>
@@ -74,6 +81,11 @@
 	<div class="side-panel">
 			<h4 class="panel-title">General Setting</h4>
 			<form method="post">
+				<div class="setting-row">
+					<span>use night mode</span>
+					<input type="checkbox" id="nightmode1"/> 
+					<label for="nightmode1" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
 				<div class="setting-row">
 					<span>Notifications</span>
 					<input type="checkbox" id="switch22" /> 
@@ -98,6 +110,11 @@
 			<h4 class="panel-title">Account Setting</h4>
 			<form method="post">
 				<div class="setting-row">
+					<span>Sub users</span>
+					<input type="checkbox" id="switch66" /> 
+					<label for="switch66" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
 					<span>personal account</span>
 					<input type="checkbox" id="switch77" /> 
 					<label for="switch77" data-on-label="ON" data-off-label="OFF"></label>
@@ -106,9 +123,24 @@
 					<span>Business account</span>
 					<input type="checkbox" id="switch88" /> 
 					<label for="switch88" data-on-label="ON" data-off-label="OFF"></label>
-				</div> 
+				</div>
+				<div class="setting-row">
+					<span>Show me online</span>
+					<input type="checkbox" id="switch99" /> 
+					<label for="switch99" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Delete history</span>
+					<input type="checkbox" id="switch101" /> 
+					<label for="switch101" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
+				<div class="setting-row">
+					<span>Expose author name</span>
+					<input type="checkbox" id="switch111" /> 
+					<label for="switch111" data-on-label="ON" data-off-label="OFF"></label>
+				</div>
 			</form>
-		</div>	
+		</div><!-- side panel -->		
 	
  @include('frontend.js')
 

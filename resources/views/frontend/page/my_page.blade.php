@@ -1,11 +1,12 @@
-@extends('frontend.index')
+ @extends('frontend.index')
 
 @section('header')
 <section>
 		<div class="feature-photo">
-			<figure><img src="{{asset('public/frontend/images/resources/social_network 3.png')}}" alt=""></figure>
+			<figure><img src="{{asset('public/profile/profile_banner/'.$image->profile_banner)}}" alt=""></figure>
 			<div class="add-btn">
-				<a href="#" title="" data-ripple="">Followers</a>
+				<span>{{$requestcount}} followers</span>
+				<a href="#" title="" data-ripple="">Add Friend</a>
 			</div>
 			<form class="edit-phto">
 				<i class="fa fa-camera-retro"></i>
@@ -19,7 +20,7 @@
 					<div class="col-lg-2 col-sm-3">
 						<div class="user-avatar">
 							<figure>
-								<img src="{{asset('public/frontend/images/resources/unknown.png')}}" alt="">
+								<img src="{{asset('public/profile/profile_image/'.$image->profile_image)}}" alt="">
 								<form class="edit-phto">
 									<i class="fa fa-camera-retro"></i>
 									<label class="fileContainer">
@@ -34,17 +35,10 @@
 						<div class="timeline-info">
 							<ul>
 								<li class="admin-name">
-								  <h5>Ema Watson</h5>
-								  <span>Group Admin</span>
+								  <h5>{{Auth::user()->full_name}}</h5>
+								  <span>{{Auth::user()->email}}</span>
 								</li>
-								<li>
-									<a class="active" href="{{route('frontend.timeline')}}" title="" data-ripple="">time line</a>
-									<a class="" href="{{route('frontend.photopage')}}" title="" data-ripple="">Photos</a>
-									<a class="" href="{{route('frontend.videospage')}}" title="" data-ripple="">Videos</a>
-									<a class="" href="{{route('frontend.friendspage')}}" title="" data-ripple="">Followers</a>
-									<a class="" href="{{route('frontend.groupspage')}}" title="" data-ripple="">Groups</a>
-									<a class="" href="{{route('frontend.aboutpage')}}" title="" data-ripple="">about</a>									
-								</li>
+								
 							</ul>
 						</div>
 					</div>
@@ -57,20 +51,69 @@
 
 
 @section('content')
-                           <div class="col-lg-6">
-								<div class="central-meta">
-									<h6>My Page List</h6>
-									@foreach($my_page as $data)
-									<ul class="list-group">
 
-										  <li class="list-group-item"><a href="{{route('my_page.view_page',$data->id)}}">{{$data->page_name}}</a></li>
-										  
-									</ul>
-									@endforeach	
-									
-								</div><!-- add post new box -->
-								<div class="">
-								
-								</div>
-							</div><!-- centerl meta -->
+
+<div class="col-lg-6">
+		
+		<!-- table -->
+		<div class="content animate-panel central-meta">
+			<h4>Page List</h4>
+
+		   <div class="row ">
+            <div class="col-lg-12 text-center">
+              
+
+                <table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>Page name</th>
+                <th>Action</th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            @if(count($my_page)>0)
+
+               @foreach($my_page as $data)
+                    <tr>
+                        
+                       
+
+                        <td><a href="{{route('my_page.view_page',$data->id)}}">{{$data->page_name}}</a></td>
+  
+                        <td>
+                        	@if(Auth::user()->id == $data->created_by)
+
+                            <!-- <a href="{{route('create_page.edit_page',$data->id)}}" class="btn btn-info btn-xs" > <i class="fa fa-edit"></i></a> -->
+                            <a href="{{route('create_page.delete_page',$data->id)}}" class="btn btn-danger btn-xs" > <i class="fa fa-trash"></i></a>
+                          @endif
+
+                        </td>
+    
+                    </tr>
+                    @endforeach
+                    @else
+                    <tr>
+                        <td colspan="3">
+                            No page Yet
+                        </td>
+                    </tr>
+                    @endif
+          
+        </tbody>
+    </table>
+
+                <p class="col-md-offset-1">
+                    <!--Better Customer Experience-->
+                </p>
+            </div>
+        </div>
+    </div>
+
+	
+	</div><!-- centerl meta -->
+
+
+                           
 @endsection
